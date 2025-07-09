@@ -43,3 +43,4 @@ jobs:
           eb status | grep "CNAME"
           eb open
           eb status
+          eb logs
