@@ -54,3 +54,4 @@ jobs:
           eb open
           eb status
           eb logs
+
