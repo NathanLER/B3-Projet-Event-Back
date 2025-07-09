@@ -58,3 +58,6 @@ jobs:
         run: |
           eb use b2-vue-envtestgithub
           eb deploy --staged --verbose
+          eb status | grep "CNAME"
+          eb open
+          eb logs
