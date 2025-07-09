@@ -36,8 +36,8 @@ jobs:
 
       - name: Create .env file
         run: |
-          echo "MONGODB_URI=${MONGODB_URI}" > .env
-          echo "SUPER_ADMIN_EMAIL=${SUPER_ADMIN_EMAIL}" >> .env
+          echo "MONGODB_URI=\"${MONGODB_URI}\"" > .env
+          echo "SUPER_ADMIN_EMAIL=\"${SUPER_ADMIN_EMAIL}\"" >> .env
           cat .env
 
       - name: Init & Deploy to Elastic Beanstalk
