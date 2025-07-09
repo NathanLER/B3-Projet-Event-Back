@@ -34,18 +34,13 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
-      - name: Create .env file
-        run: |
-          echo "MONGODB_URI=\"${MONGODB_URI}\"" > .env
-          echo "SUPER_ADMIN_EMAIL=\"${SUPER_ADMIN_EMAIL}\"" >> .env
-          cat .env
-
       - name: Init & Deploy to Elastic Beanstalk
         run: |
           eb init test -r ${{ secrets.AWS_REGION }} -p "Node.js 22 running on 64bit Amazon Linux 2023" --keyname aws-eb
           eb create b2-vue-envtestgithub --single
           eb use b2-vue-envtestgithub
-          cat .env
+          eb use b2-vue-envtestgithub
+          eb setenv MONGODB_URI="${MONGODB_URI}" SUPER_ADMIN_EMAIL="${SUPER_ADMIN_EMAIL}"
           eb deploy --staged --verbose
 
       - name: Check deployment
