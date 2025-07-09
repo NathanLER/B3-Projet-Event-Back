@@ -39,6 +39,7 @@ jobs:
         run: |
           eb init test -r ${{ secrets.AWS_REGION }} -p "Node.js 22 running on 64bit Amazon Linux 2023" --keyname aws-eb
           eb create b2-vue-envtestgithub --single
-          sleep 120
           eb use b2-vue-envtestgithub
           eb deploy --staged --verbose
+          eb status | grep "CNAME"
+          eb open
