@@ -18,6 +18,8 @@ jobs:
 
       - name: Install dependencies & build
         run: |
+          MONGODB_URI = {{ secrets.MONGODB_URI }}
+          SUPER_ADMIN_EMAIL = {{ secrets.{{ secrets.MONGODB_URI }} }}
           npm ci
           npm start # ⟵ génère dist/ à jour
 
