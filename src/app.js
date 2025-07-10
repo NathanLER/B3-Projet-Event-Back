@@ -9,7 +9,7 @@ const dao = new UserDAO();
 const { SECRET_JWT } = require('./core/config');
 const cors = require('cors');
 app.use(cors({
-    origin: 'http://localhost:5173', // autorise VITE
+    origin: '*', // autorise VITE
     credentials: true                // autorise les cookies/headers d'auth
 }));
 app.use(bodyParser.json());
