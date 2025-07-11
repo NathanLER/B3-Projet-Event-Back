@@ -8,9 +8,20 @@ const port = 3000;
 const dao = new UserDAO();
 const { SECRET_JWT } = require('./core/config');
 const cors = require('cors');
+const allowedOrigins = [
+  'http://arsdv.site/', 
+  'http://monvuejsenv.eba-qubnz8ha.us-west-2.elasticbeanstalk.com/'
+];
+
 app.use(cors({
-    origin: 'http://monvuejsenv.eba-qubnz8ha.us-west-2.elasticbeanstalk.com', // autorise VITE
-    credentials: true                // autorise les cookies/headers d'auth
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('CORS not allowed: ' + origin));
+    }
+  },
+  credentials: true
 }));
 app.use(bodyParser.json());
 const authRouter = require('./auth/auth-routes');
