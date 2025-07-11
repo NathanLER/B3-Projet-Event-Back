@@ -9,8 +9,8 @@ const dao = new UserDAO();
 const { SECRET_JWT } = require('./core/config');
 const cors = require('cors');
 const allowedOrigins = [
-  'http://arsdv.site/', 
-  'http://monvuejsenv.eba-qubnz8ha.us-west-2.elasticbeanstalk.com/'
+  'http://arsdv.site', 
+  'http://monvuejsenv.eba-qubnz8ha.us-west-2.elasticbeanstalk.com'
 ];
 
 app.use(cors({
